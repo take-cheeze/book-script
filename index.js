@@ -3,7 +3,8 @@
 const cheerio = require('cheerio'),
       fetch = require('node-fetch'),
       fs = require('fs'),
-      csv = require('csv');
+      csv = require('csv'),
+      ISBN = require('isbn').ISBN;
 
 const config = JSON.parse(fs.readFileSync(`${__dirname}/config.json`));
 const search_cache_path = `${__dirname}/search_cache.json`;
@@ -13,9 +14,10 @@ function output_book_list() {
     const books = JSON.parse(fs.readFileSync(`${__dirname}/wanted_books.json`));
 
     const already_found = {};
+    const csv_header = ['ISBN', '題名', '著者', '出版社', '刊行', 'ページ数', '値段', '予約URL', '画像URL'];
 
     config.libraries.forEach((library) => {
-        const res = [['ISBN', '題名', '著者', '出版社', '刊行', 'ページ数', '値段', '予約URL', '画像URL']];
+        const res = [csv_header];
         books.forEach((book) => {
             const cache = search_cache[book.id][library];
             if (!already_found[book.id] && cache.reserveurl) {
@@ -26,10 +28,31 @@ function output_book_list() {
             }
         });
 
+        console.log(`${library} books count: ${res.length - 1}`);
         csv.stringify(res, (err, output) => {
             if (err) { console.log(err); }
             fs.writeFileSync(`${__dirname}/${library}.csv`, output);
         });
+    });
+
+    const not_found = [csv_header];
+    books.forEach((book) => {
+        if (!already_found[book.id]) {
+            const isbn = ISBN.parse(book.id);
+            const url = isbn
+                  ? `http://book.tsuhankensaku.com/hon/isbn/${isbn.asIsbn13()}/`
+                  : `http://book.tsuhankensaku.com/hon/?q=${book.id}&t=booksearch`;
+            not_found.push([book.id, book.title, book.item.author, book.item.publisher,
+                            book.item.release_date, book.item.pages, book.item.price || book.item.savedPrice,
+                            url, book.image_2x]);
+            already_found[book.id] = true;
+        }
+
+    });
+    console.log(`Wanted books count: ${not_found.length - 1}`);
+    csv.stringify(not_found, (err, output) => {
+        if (err) { console.log(err); }
+        fs.writeFileSync(`${__dirname}/should_buy.csv`, output);
     });
 }
 
@@ -91,7 +114,7 @@ fetch(`http://booklog.jp/users/${config.booklog_id}`).then((v) => v.text())
                 .then((v) => {
                     res = res.concat(v.books);
                     if (++count >= booklog_len) {
-                        console.log(`wanted book count: ${res.length}`);
+                        console.log(`Wanted books total count: ${res.length}`);
                         fs.writeFileSync(`${__dirname}/wanted_books.json`, JSON.stringify(res));
                         search_libraries(res);
                     }

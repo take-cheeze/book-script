@@ -2,10 +2,36 @@
 
 const cheerio = require('cheerio'),
       fetch = require('node-fetch'),
-      fs = require('fs');
+      fs = require('fs'),
+      csv = require('csv');
 
 const config = JSON.parse(fs.readFileSync(`${__dirname}/config.json`));
 const search_cache_path = `${__dirname}/search_cache.json`;
+
+function output_book_list() {
+    const search_cache = JSON.parse(fs.readFileSync(`${__dirname}/search_cache.json`));
+    const books = JSON.parse(fs.readFileSync(`${__dirname}/wanted_books.json`));
+
+    const already_found = {};
+
+    config.libraries.forEach((library) => {
+        const res = [['ISBN', '題名', '著者', '出版社', '刊行', 'ページ数', '値段', '予約URL', '画像URL']];
+        books.forEach((book) => {
+            const cache = search_cache[book.id][library];
+            if (!already_found[book.id] && cache.reserveurl) {
+                res.push([book.id, book.title, book.item.author, book.item.publisher,
+                          book.item.release_date, book.item.pages, book.item.price || book.item.savedPrice,
+                          cache.reserveurl, book.image_2x]);
+                already_found[book.id] = true;
+            }
+        });
+
+        csv.stringify(res, (err, output) => {
+            if (err) { console.log(err); }
+            fs.writeFileSync(`${__dirname}/${library}.csv`, output);
+        });
+    });
+}
 
 function search_libraries(books, table = null, search_cache = null) {
     if (!table) {
@@ -22,6 +48,7 @@ function search_libraries(books, table = null, search_cache = null) {
     // no books to search
     if (books.length === 0) {
         fs.writeFileSync(search_cache_path, JSON.stringify(search_cache));
+        output_book_list();
         return;
     }
 

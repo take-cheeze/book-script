@@ -36,20 +36,26 @@ function output_book_list() {
     });
 
     const not_found = [csv_header];
+    let price_sum = 0;
     books.forEach((book) => {
         if (!already_found[book.id]) {
             const isbn = ISBN.parse(book.id);
             const url = isbn
                   ? `http://book.tsuhankensaku.com/hon/isbn/${isbn.asIsbn13()}/`
                   : `http://book.tsuhankensaku.com/hon/?q=${book.id}&t=booksearch`;
+            let price = book.item.price || book.item.savedPrice;
             not_found.push([book.id, book.title, book.item.author, book.item.publisher,
-                            book.item.release_date, book.item.pages, book.item.price || book.item.savedPrice,
+                            book.item.release_date, book.item.pages, price,
                             url, book.image_2x]);
-            already_found[book.id] = true;
+
+            price = price || '0';
+            price = price.replace(/^￥ /, '').replace(/,/g, '');
+            price_sum += parseInt(price);
         }
 
     });
     console.log(`Wanted books count: ${not_found.length - 1}`);
+    console.log(`Need ￥${price_sum.toLocaleString()} to buy all should buy books`);
     csv.stringify(not_found, (err, output) => {
         if (err) { console.log(err); }
         fs.writeFileSync(`${__dirname}/should_buy.csv`, output);

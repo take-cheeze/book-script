@@ -102,9 +102,10 @@ function continue_session(session, books, table, search_cache) {
         for(let isbn in session.books) {
             search_cache[isbn] = session.books[isbn];
         }
-        fs.writeFile(search_cache_path, JSON.stringify(search_cache));
-        setTimeout(() => { search_libraries(books, table, search_cache); },
-                   config.search_interval);
+        fs.writeFileSync(search_cache_path, JSON.stringify(search_cache));
+        setTimeout(() => {
+            search_libraries(books, table, search_cache);
+        }, config.search_interval);
     }
 }
 

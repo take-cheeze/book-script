@@ -70,7 +70,11 @@ function search_libraries(books, table = null, search_cache = null) {
         search_cache = JSON.parse(fs.readFileSync(search_cache_path));
 
         // filter books in search cache
-        books = books.filter((v) => !search_cache[v.id]);
+        books = books.filter((v) => {
+            const c = search_cache[v.id];
+            return !c ||
+                (Object.keys(c).filter((v) => c[v].reserveurl.length > 0).length === 0);
+        });
     }
     search_cache = search_cache || {};
 

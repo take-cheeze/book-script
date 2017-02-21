@@ -82,6 +82,7 @@ function search_libraries(books, table = null, search_cache = null) {
     }
 
     const isbns = books.splice(0, config.per_search).map((v) => v.id);
+    console.log(`seaching ISBNs: ${isbns}`);
     fetch(`https://api.calil.jp/check?appkey=${config.calil_api_key}&isbn=${isbns.join(',')}&systemid=${config.libraries.join(',')}&format=json&callback=no`)
         .then((v) => v.json())
         .then((json) => {

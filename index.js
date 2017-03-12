@@ -69,11 +69,15 @@ function search_libraries(books, table = null, search_cache = null) {
     if (!search_cache && fs.existsSync(search_cache_path)) {
         search_cache = JSON.parse(fs.readFileSync(search_cache_path));
 
+        const cur_year = new Date().getFullYear();
+
         // filter books in search cache
         books = books.filter((v) => {
             const c = search_cache[v.id];
+            const book_year = parseInt(v.item.release_date.split('-')[0]);
             return !c ||
-                (Object.keys(c).filter((v) => c[v].reserveurl.length > 0).length === 0);
+                (Object.keys(c).filter((v) => c[v].reserveurl.length > 0).length === 0 &&
+                 ((cur_year - book_year) < config.old_book_threshold));
         });
     }
     search_cache = search_cache || {};

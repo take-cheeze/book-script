@@ -54,8 +54,8 @@ function output_book_list() {
         }
     });
 
-    console.log(`Wanted books count: ${not_found.length - 1}`);
-    console.log(`Need ￥${price_sum.toLocaleString()} to buy all should buy books`);
+    console.log(`Books not in library count: ${not_found.length - 1}`);
+    console.log(`Need ￥${price_sum.toLocaleString()} to buy all books not in library.`);
     csv.stringify(not_found, (err, output) => {
         if (err) { console.log(err); }
         fs.writeFileSync(`${__dirname}/should_buy.csv`, output);

@@ -52,8 +52,8 @@ function output_book_list() {
             price = price.replace(/^￥ /, '').replace(/,/g, '');
             price_sum += parseInt(price);
         }
-
     });
+
     console.log(`Wanted books count: ${not_found.length - 1}`);
     console.log(`Need ￥${price_sum.toLocaleString()} to buy all should buy books`);
     csv.stringify(not_found, (err, output) => {

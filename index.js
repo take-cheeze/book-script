@@ -9,6 +9,12 @@ const cheerio = require('cheerio'),
 const config = JSON.parse(fs.readFileSync(`${__dirname}/config.json`));
 const search_cache_path = `${__dirname}/search_cache.json`;
 
+process.on('unhandledRejection', console.dir);
+
+function owned_in_library(cache_ent) {
+    return Object.keys(cache_ent.libkey).length > 0;
+}
+
 function output_book_list() {
     const search_cache = JSON.parse(fs.readFileSync(`${__dirname}/search_cache.json`));
     const books = JSON.parse(fs.readFileSync(`${__dirname}/wanted_books.json`));
@@ -20,7 +26,7 @@ function output_book_list() {
         const res = [csv_header];
         books.forEach((book) => {
             const cache = search_cache[book.id][library];
-            if (!already_found[book.id] && cache.reserveurl) {
+            if (!already_found[book.id] && owned_in_library(cache)) {
                 res.push([book.id, book.title, book.item.author, book.item.publisher,
                           book.item.release_date, book.item.pages, book.item.price || book.item.savedPrice,
                           cache.reserveurl, book.image_2x]);
@@ -74,13 +80,17 @@ function search_libraries(books, table = null, search_cache = null) {
         // filter books in search cache
         books = books.filter((v) => {
             const c = search_cache[v.id];
-            const book_year = parseInt(v.item.release_date.split('-')[0]);
-            return !c ||
-                (Object.keys(c).filter((v) => c[v].reserveurl.length > 0).length === 0 &&
-                 ((cur_year - book_year) < config.old_book_threshold));
+            if (c) {
+                const own_libs = Object.keys(c).filter((v) => owned_in_library(c[v]));
+                if (own_libs.length > 0) { return false; }
+
+                const book_year = parseInt(v.item.release_date.split('-')[0]);
+                if ((cur_year - book_year) > config.old_book_threshold) { return false; }
+            }
+            return true;
         });
     }
-    search_cache = search_cache || {};
+    else { search_cache = search_cache || {} };
 
     // no books to search
     if (books.length === 0) {

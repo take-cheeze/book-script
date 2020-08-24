@@ -135,23 +135,27 @@ function continue_session(session, books, table, search_cache) {
     }
 }
 
-fetch(`http://booklog.jp/users/${config.booklog_id}`).then((v) => v.text())
+fetch(`https://api.calil.jp/library?appkey=${config.calil_api_key}&geocode=136.7163027,35.390516&limit=1&format=json&callback=`).then((v) => v.text())
     .then((body) => {
-        const $ = cheerio.load(body);
-        const per_page = 25;
-        const wanted = parseInt(JSON.parse($('#shelf')[0].attribs['data-shelf-stats']).statuses[1]);
-        const booklog_len = Math.ceil(wanted / per_page);
-        let res = [], count = 0;
-        Array.apply(null, {length: booklog_len}).map(Number.call, Number).forEach((v) => {
-            fetch(`http://booklog.jp/users/${config.booklog_id}/all?category_id=all&status=1&json=true&page=${v + 1}`)
-                .then((v) => v.json())
-                .then((v) => {
-                    res = res.concat(v.books);
-                    if (++count >= booklog_len) {
-                        console.log(`Wanted books total count: ${res.length}`);
-                        fs.writeFileSync(`${__dirname}/wanted_books.json`, JSON.stringify(res));
-                        search_libraries(res);
-                    }
+        console.log(body);
+        fetch(`http://booklog.jp/users/${config.booklog_id}`).then((v) => v.text())
+            .then((body) => {
+                const $ = cheerio.load(body);
+                const per_page = 25;
+                const wanted = parseInt(JSON.parse($('#shelf')[0].attribs['data-shelf-stats']).statuses[1]);
+                const booklog_len = Math.ceil(wanted / per_page);
+                let res = [], count = 0;
+                Array.apply(null, {length: booklog_len}).map(Number.call, Number).forEach((v) => {
+                    fetch(`http://booklog.jp/users/${config.booklog_id}/all?category_id=all&status=1&json=true&page=${v + 1}`)
+                        .then((v) => v.json())
+                        .then((v) => {
+                            res = res.concat(v.books);
+                            if (++count >= booklog_len) {
+                                console.log(`Wanted books total count: ${res.length}`);
+                                fs.writeFileSync(`${__dirname}/wanted_books.json`, JSON.stringify(res));
+                                search_libraries(res);
+                            }
+                        });
                 });
-        });
+            });
     });

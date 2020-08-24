@@ -1,0 +1,30 @@
+name: Update book list
+
+on:
+  push:
+    branches: [ master ]
+  schedule:
+    - cron: "0 * * * *"
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci
+    - run: npm run main
+    - run: npm run render
+    - run: |
+        git diff --exit-code || \
+        git commit -a -m "Update book list" && \
+        git push https://take-cheeze:{{secrets.GITHUB_TOKEN}}@${GITHUB_REPOSITORY}.git master

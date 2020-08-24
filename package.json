@@ -4,7 +4,8 @@
   "description": "ブクログとカーリル連携",
   "main": "index.js",
   "scripts": {
-    "main": "./index.js"
+    "main": "./index.js",
+    "render": "./render.js"
   },
   "repository": {
     "type": "git",
@@ -16,6 +17,7 @@
     "cheerio": "^0.22.0",
     "csv": "^1.1.1",
     "isbn": "^0.4.0",
-    "node-fetch": "^1.6.3"
+    "node-fetch": "^1.6.3",
+    "underscore": "^1.10.2"
   }
 }

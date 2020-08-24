@@ -26,7 +26,7 @@ function output_book_list() {
         const res = [csv_header];
         books.forEach((book) => {
             const cache = search_cache[book.id][library];
-            if (!already_found[book.id] && owned_in_library(cache)) {
+            if (!already_found[book.id] && cache.status !== 'Error' && owned_in_library(cache)) {
                 res.push([book.id, book.title, book.item.author, book.item.publisher,
                           book.item.release_date, book.item.pages, book.item.price || book.item.savedPrice,
                           cache.reserveurl, book.image_2x]);
@@ -81,11 +81,16 @@ function search_libraries(books, table = null, search_cache = null) {
         books = books.filter((v) => {
             const c = search_cache[v.id];
             if (c) {
+                for (const k in c) {
+                    if (c[k].status !== 'OK') { return false; }
+                }
                 const own_libs = Object.keys(c).filter((v) => owned_in_library(c[v]));
                 if (own_libs.length > 0) { return false; }
 
-                const book_year = parseInt(v.item.release_date.split('-')[0]);
-                if ((cur_year - book_year) > config.old_book_threshold) { return false; }
+                if (v.item.release_date) {
+                    const book_year = parseInt(v.item.release_date.split('-')[0]);
+                    if ((cur_year - book_year) > config.old_book_threshold) { return false; }
+                }
             }
             return true;
         });
@@ -100,7 +105,7 @@ function search_libraries(books, table = null, search_cache = null) {
     }
 
     const isbns = books.splice(0, config.per_search).map((v) => v.id);
-    console.log(`seaching ISBNs: ${isbns}`);
+    console.log(`searching ISBNs (${books.length} left): ${isbns}`);
     fetch(`https://api.calil.jp/check?appkey=${config.calil_api_key}&isbn=${isbns.join(',')}&systemid=${config.libraries.join(',')}&format=json&callback=no`)
         .then((v) => v.json())
         .then((json) => {

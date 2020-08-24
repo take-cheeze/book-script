@@ -97,6 +97,7 @@ const library_template = `
 config.libraries.push('should_buy');
 
 for (const l of config.libraries) {
-  const parsed = csv_parse(fs.readFileSync(`${__dirname}/${l}.csv`), { columns: true });
+  let parsed = csv_parse(fs.readFileSync(`${__dirname}/${l}.csv`), { columns: true });
+  parsed = _.sortBy(parsed, (v) => v['ISBN']);
   fs.writeFileSync(`${__dirname}/docs/${l}.html`, _.template(library_template)({'books': parsed, 'library': l}));
 }

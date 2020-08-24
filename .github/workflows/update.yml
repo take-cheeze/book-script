@@ -25,6 +25,7 @@ jobs:
     - run: npm run main
     - run: npm run render
     - run: |
-        git diff --exit-code || \
-        git commit -a -m "Update book list" && \
-        git push https://take-cheeze:{{secrets.GITHUB_TOKEN}}@${GITHUB_REPOSITORY}.git master
+        if ! git diff --exit-code >/dev/null ; then
+          git commit -a -m "Update book list"
+          git push https://take-cheeze:{{secrets.GITHUB_TOKEN}}@${GITHUB_REPOSITORY}.git master
+        fi

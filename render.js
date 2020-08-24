@@ -38,7 +38,7 @@ const index_template = `
 </html>
 `;
 
-fs.writeFileSync(`${__dirname}/html/index.html`, _.template(index_template)({'config': config}));
+fs.writeFileSync(`${__dirname}/docs/index.html`, _.template(index_template)({'config': config}));
 
 const library_template = `
 <!doctype html>
@@ -98,5 +98,5 @@ config.libraries.push('should_buy');
 
 for (const l of config.libraries) {
   const parsed = csv_parse(fs.readFileSync(`${__dirname}/${l}.csv`), { columns: true });
-  fs.writeFileSync(`${__dirname}/html/${l}.html`, _.template(library_template)({'books': parsed, 'library': l}));
+  fs.writeFileSync(`${__dirname}/docs/${l}.html`, _.template(library_template)({'books': parsed, 'library': l}));
 }

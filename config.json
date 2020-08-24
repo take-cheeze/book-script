@@ -1,0 +1,11 @@
+{
+  "old_book_threshold": 20,
+  "per_search": 20,
+  "search_interval": 100,
+  "booklog_id": "takecheeze",
+  "libraries": [
+    "Nagano_Azumino",
+    "Nagano_Matsumoto",
+    "Univ_Air"
+  ]
+}

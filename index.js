@@ -7,6 +7,9 @@ const cheerio = require('cheerio'),
       ISBN = require('isbn').ISBN;
 
 const config = JSON.parse(fs.readFileSync(`${__dirname}/config.json`));
+if (process.env.CALIL_APPKEY) {
+    config.calil_api_key = process.env.CALIL_APPKEY;
+}
 const search_cache_path = `${__dirname}/search_cache.json`;
 
 process.on('unhandledRejection', console.dir);

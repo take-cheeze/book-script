@@ -26,6 +26,8 @@ jobs:
     - run: npm run render
     - run: |
         if ! git diff --exit-code >/dev/null ; then
+          git config --global user.email take-cheeze@users.noreply.github.com
+          git config --global user.name "take-cheeze bot"
           git commit -a -m "Update book list"
           git push https://take-cheeze:{{secrets.GITHUB_TOKEN}}@${GITHUB_REPOSITORY}.git master
         fi

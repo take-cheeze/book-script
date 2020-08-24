@@ -137,7 +137,6 @@ function continue_session(session, books, table, search_cache) {
 
 fetch(`https://api.calil.jp/library?appkey=${config.calil_api_key}&geocode=136.7163027,35.390516&limit=1&format=json&callback=`).then((v) => v.text())
     .then((body) => {
-        console.log(body);
         fetch(`http://booklog.jp/users/${config.booklog_id}`).then((v) => v.text())
             .then((body) => {
                 const $ = cheerio.load(body);

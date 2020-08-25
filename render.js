@@ -81,8 +81,13 @@ const library_template = `
             <td><a href="https://booklog.jp/author/<%= encodeURI(b['著者']) %>"><%= b['著者'] %></a></td>
             <td><%= b['ページ数'] %></td>
             <td>
-              <a href="<%= b['予約URL'] %>" target="_blank" class="btn btn-primary">Reserve</a>
               <a href="https://calil.jp/book/<%= b['ISBN'] %>" target="_blank" class="btn btn-info">Calil</a>
+              <% if (library !== "should_buy") { %>
+                <a href="<%= b['予約URL'] %>" target="_blank" class="btn btn-primary">Reserve</a>
+              <% } else { %>
+                <a href="https://amazon.co.jp/dp/<%= b['ISBN'] %>" target="_blank" class="btn btn-warning">Amazozn</a>
+                <a href="https://www.e-hon.ne.jp/bec/SA/Forward?spKeyword=<%= b['ISBN'] %>&button=btnSpeed&mode=kodawari_header&ctlB9Flg=1" target="_blank" class="btn btn-info">e-hon</a>
+              <% } %>
             </td>
           </tr>
         <% } %>

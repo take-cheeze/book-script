@@ -20,6 +20,7 @@ const index_template = `
     <title>Library List</title>
   </head>
   <body>
+    <h1>Book shelf: <a href="https://booklog.jp/users/<%= config.booklog_id %>"><%= config.booklog_id %></a></h1>
     <h1>Library List</h1>
 
     <ul class="list-group">
@@ -79,7 +80,10 @@ const library_template = `
             <td><a href="https://booklog.jp/item/1/<%= b['ISBN'] %>"><%= b['題名'] %></a></td>
             <td><a href="https://booklog.jp/author/<%= encodeURI(b['著者']) %>"><%= b['著者'] %></a></td>
             <td><%= b['ページ数'] %></td>
-            <td><a href="<%= b['予約URL'] %>" target="_blank" class="btn btn-primary">Reserve</a></td>
+            <td>
+              <a href="<%= b['予約URL'] %>" target="_blank" class="btn btn-primary">Reserve</a>
+              <a href="https://calil.jp/book/<%= b['ISBN'] %>" target="_blank" class="btn btn-info">Calil</a>
+            </td>
           </tr>
         <% } %>
       </tbody>

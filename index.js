@@ -72,7 +72,7 @@ function output_book_list() {
         if (err) { console.log(err); }
         fs.writeFileSync(`${__dirname}/should_buy.csv`, output);
     });
-    fs.writeFileSync(`${__dirname}/should_buy`, to_json(not_found));
+    fs.writeFileSync(`${__dirname}/should_buy.json`, to_json(not_found));
 }
 
 function search_libraries(books, table = null, search_cache = null) {

@@ -88,8 +88,12 @@ function search_libraries(books, table = null, search_cache = null) {
         books = books.filter((v) => {
             const c = search_cache[v.id];
             if (c) {
+                for (const l of config.libraries) {
+                    if (!(l in c)) { return true; }
+                }
+
                 for (const k in c) {
-                    if (c[k].status !== 'OK') { return false; }
+                    if (c[k].status !== 'OK') { return true; }
                 }
                 const own_libs = Object.keys(c).filter((v) => owned_in_library(c[v]));
                 if (own_libs.length > 0) { return false; }

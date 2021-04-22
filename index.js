@@ -122,6 +122,7 @@ function search_libraries(books, table = null, search_cache = null) {
 
 function continue_session(session, books, table, search_cache) {
     if (session.continue === 1) {
+        process.stdout.write('.');
         fetch(`https://api.calil.jp/check?appkey=${config.calil_api_key}&session=${session.session}&format=json&callback=no`)
             .then((v) => v.json())
             .then((json) => {
@@ -129,6 +130,7 @@ function continue_session(session, books, table, search_cache) {
                            config.search_interval);
             });
     } else {
+        console.log('');
         for(let isbn in session.books) {
             search_cache[isbn] = session.books[isbn];
         }

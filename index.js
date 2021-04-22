@@ -42,9 +42,9 @@ function output_book_list() {
         console.log(`${library} books count: ${res.length - 1}`);
         csv.stringify(res, (err, output) => {
             if (err) { console.log(err); }
-            fs.writeFileSync(`${__dirname}/${library}.csv`, output);
+            fs.writeFileSync(`${__dirname}/result/${library}.csv`, output);
         });
-        fs.writeFileSync(`${__dirname}/${library}.json`, to_json(res));
+        fs.writeFileSync(`${__dirname}/result/${library}.json`, to_json(res));
     });
 
     const not_found = [csv_header];
@@ -70,9 +70,9 @@ function output_book_list() {
     console.log(`Need ￥${price_sum.toLocaleString()} to buy all books not in library.`);
     csv.stringify(not_found, (err, output) => {
         if (err) { console.log(err); }
-        fs.writeFileSync(`${__dirname}/should_buy.csv`, output);
+        fs.writeFileSync(`${__dirname}/result/should_buy.csv`, output);
     });
-    fs.writeFileSync(`${__dirname}/should_buy.json`, to_json(not_found));
+    fs.writeFileSync(`${__dirname}/result/should_buy.json`, to_json(not_found));
 }
 
 function search_libraries(books, table = null, search_cache = null) {
@@ -162,7 +162,7 @@ fetch(`https://api.calil.jp/library?appkey=${config.calil_api_key}&geocode=136.7
                             res = res.concat(v.books);
                             if (++count >= booklog_len) {
                                 console.log(`Wanted books total count: ${res.length}`);
-                                fs.writeFileSync(`${__dirname}/wanted_books.json`, to_json(res));
+                                fs.writeFileSync(`${__dirname}/result/wanted_books.json`, to_json(res));
                                 search_libraries(res);
                             }
                         });

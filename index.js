@@ -145,6 +145,7 @@ function continue_session(session, books, table, search_cache) {
     }
 }
 
+// Check calil api key works
 fetch(`https://api.calil.jp/library?appkey=${config.calil_api_key}&geocode=136.7163027,35.390516&limit=1&format=json&callback=`).then((v) => v.text())
     .then((body) => {
         fetch(`http://booklog.jp/users/${config.booklog_id}`).then((v) => v.text())

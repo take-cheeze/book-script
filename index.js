@@ -19,6 +19,19 @@ function owned_in_library(cache_ent) {
 }
 
 const to_json = (obj) => { return JSON.stringify(obj, null, 2); };
+const csv_to_json = (ary) => {
+    return {
+        isbn: ary[0],
+        title: ary[1],
+        author: ary[2],
+        publisher: ary[3],
+        release_date: ary[4],
+        pages: ary[5],
+        price: ary[6],
+        reserve_url: ary[7],
+        image_url: ary[8],
+    }
+}
 
 function output_book_list() {
     const search_cache = JSON.parse(fs.readFileSync(`${__dirname}/search_cache.json`));
@@ -44,7 +57,7 @@ function output_book_list() {
             if (err) { console.log(err); }
             fs.writeFileSync(`${__dirname}/result/${library}.csv`, output);
         });
-        fs.writeFileSync(`${__dirname}/result/${library}.json`, to_json(res));
+        fs.writeFileSync(`${__dirname}/result/${library}.json`, to_json(res.slice(1, -1).map(csv_to_json)));
     });
 
     const not_found = [csv_header];
@@ -72,7 +85,7 @@ function output_book_list() {
         if (err) { console.log(err); }
         fs.writeFileSync(`${__dirname}/result/should_buy.csv`, output);
     });
-    fs.writeFileSync(`${__dirname}/result/should_buy.json`, to_json(not_found));
+    fs.writeFileSync(`${__dirname}/result/should_buy.json`, to_json(not_found.slice(1, -1).map(csv_to_json)));
 }
 
 function search_libraries(books, table = null, search_cache = null) {

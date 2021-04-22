@@ -1,11 +1,14 @@
 {
   "old_book_threshold": 20,
   "per_search": 20,
-  "search_interval": 100,
+  "search_interval": 300,
   "booklog_id": "takecheeze",
   "libraries": [
+    "Tokyo_Nerima",
+    "Tokyo_Chiyoda",
+    "Tokyo_Bunkyo",
+    "Univ_Air",
     "Nagano_Azumino",
-    "Nagano_Matsumoto",
-    "Univ_Air"
+    "Nagano_Matsumoto"
   ]
 }

@@ -22,7 +22,7 @@ const to_json = (obj) => { return JSON.stringify(obj, null, 2); };
 
 function output_book_list() {
     const search_cache = JSON.parse(fs.readFileSync(`${__dirname}/search_cache.json`));
-    const books = JSON.parse(fs.readFileSync(`${__dirname}/wanted_books.json`));
+    const books = JSON.parse(fs.readFileSync(`${__dirname}/result/wanted_books.json`));
 
     const already_found = {};
     const csv_header = ['ISBN', '題名', '著者', '出版社', '刊行', 'ページ数', '値段', '予約URL', '画像URL'];

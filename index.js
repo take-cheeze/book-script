@@ -18,6 +18,8 @@ function owned_in_library(cache_ent) {
     return Object.keys(cache_ent.libkey).length > 0;
 }
 
+const to_json = (obj) => { return JSON.stringify(obj, null, 2); };
+
 function output_book_list() {
     const search_cache = JSON.parse(fs.readFileSync(`${__dirname}/search_cache.json`));
     const books = JSON.parse(fs.readFileSync(`${__dirname}/wanted_books.json`));
@@ -42,6 +44,7 @@ function output_book_list() {
             if (err) { console.log(err); }
             fs.writeFileSync(`${__dirname}/${library}.csv`, output);
         });
+        fs.writeFileSync(`${__dirname}/${library}.json`, to_json(res));
     });
 
     const not_found = [csv_header];
@@ -69,6 +72,7 @@ function output_book_list() {
         if (err) { console.log(err); }
         fs.writeFileSync(`${__dirname}/should_buy.csv`, output);
     });
+    fs.writeFileSync(`${__dirname}/should_buy`, to_json(not_found));
 }
 
 function search_libraries(books, table = null, search_cache = null) {
@@ -102,7 +106,7 @@ function search_libraries(books, table = null, search_cache = null) {
 
     // no books to search
     if (books.length === 0) {
-        fs.writeFileSync(search_cache_path, JSON.stringify(search_cache));
+        fs.writeFileSync(search_cache_path, to_json(search_cache));
         output_book_list();
         return;
     }
@@ -128,7 +132,7 @@ function continue_session(session, books, table, search_cache) {
         for(let isbn in session.books) {
             search_cache[isbn] = session.books[isbn];
         }
-        fs.writeFileSync(search_cache_path, JSON.stringify(search_cache));
+        fs.writeFileSync(search_cache_path, to_json(search_cache));
         setTimeout(() => {
             search_libraries(books, table, search_cache);
         }, config.search_interval);
@@ -151,7 +155,7 @@ fetch(`https://api.calil.jp/library?appkey=${config.calil_api_key}&geocode=136.7
                             res = res.concat(v.books);
                             if (++count >= booklog_len) {
                                 console.log(`Wanted books total count: ${res.length}`);
-                                fs.writeFileSync(`${__dirname}/wanted_books.json`, JSON.stringify(res));
+                                fs.writeFileSync(`${__dirname}/wanted_books.json`, to_json(res));
                                 search_libraries(res);
                             }
                         });

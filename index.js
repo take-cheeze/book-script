@@ -93,7 +93,7 @@ function search_libraries(books, table = null, search_cache = null) {
                 }
 
                 for (const k in c) {
-                    if (c[k].status !== 'OK') { return true; }
+                    if (c[k].status !== 'OK') { return false; }
                 }
                 const own_libs = Object.keys(c).filter((v) => owned_in_library(c[v]));
                 if (own_libs.length > 0) { return false; }

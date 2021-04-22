@@ -20474,32 +20474,32 @@
   },
   "4760602046": {
     "Nagano_Azumino": {
-      "status": "OK",
+      "status": "Cache",
       "libkey": {},
       "reserveurl": ""
     },
     "Nagano_Matsumoto": {
-      "status": "OK",
+      "status": "Cache",
       "libkey": {},
       "reserveurl": ""
     },
     "Tokyo_Nerima": {
-      "status": "OK",
+      "status": "Cache",
       "libkey": {},
       "reserveurl": ""
     },
     "Tokyo_Bunkyo": {
-      "status": "OK",
+      "status": "Cache",
       "libkey": {},
       "reserveurl": ""
     },
     "Tokyo_Chiyoda": {
-      "status": "OK",
+      "status": "Cache",
       "libkey": {},
       "reserveurl": ""
     },
     "Univ_Air": {
-      "status": "OK",
+      "status": "Cache",
       "libkey": {},
       "reserveurl": ""
     }

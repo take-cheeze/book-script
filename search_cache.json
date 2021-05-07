@@ -20666,12 +20666,12 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Tokyo_Bunkyo": {
+    "Tokyo_Nerima": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
     },
-    "Nagano_Azumino": {
+    "Tokyo_Bunkyo": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -20681,7 +20681,7 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Tokyo_Nerima": {
+    "Nagano_Azumino": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

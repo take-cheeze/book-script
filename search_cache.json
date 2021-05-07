@@ -20661,16 +20661,6 @@
     }
   },
   "B002O0DMC2": {
-    "Nagano_Azumino": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
-    "Nagano_Matsumoto": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
     "Tokyo_Nerima": {
       "status": "OK",
       "libkey": {},
@@ -20681,28 +20671,28 @@
       "libkey": {},
       "reserveurl": ""
     },
+    "Nagano_Azumino": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
     "Tokyo_Chiyoda": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
     },
     "Univ_Air": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Matsumoto": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
     }
   },
   "4774179442": {
-    "Nagano_Azumino": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
-    "Nagano_Matsumoto": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
     "Tokyo_Nerima": {
       "status": "OK",
       "libkey": {},
@@ -20713,12 +20703,22 @@
       "libkey": {},
       "reserveurl": ""
     },
+    "Nagano_Azumino": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
     "Tokyo_Chiyoda": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
     },
     "Univ_Air": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Matsumoto": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

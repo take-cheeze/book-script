@@ -18,6 +18,6 @@
     "csv": ">=4.4.6",
     "isbn": "^0.4.0",
     "node-fetch": "^2.6.1",
-    "underscore": "^1.10.2"
+    "underscore": "^1.12.1"
   }
 }

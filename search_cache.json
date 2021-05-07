@@ -20661,6 +20661,11 @@
     }
   },
   "B002O0DMC2": {
+    "Nagano_Azumino": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
     "Nagano_Matsumoto": {
       "status": "OK",
       "libkey": {},
@@ -20671,7 +20676,7 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Nagano_Azumino": {
+    "Tokyo_Chiyoda": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -20682,11 +20687,6 @@
       "reserveurl": ""
     },
     "Tokyo_Nerima": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
-    "Tokyo_Chiyoda": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

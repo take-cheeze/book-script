@@ -33673,12 +33673,7 @@
     }
   },
   "B00CLZIKC2": {
-    "Tokyo_Bunkyo": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
-    "Univ_Air": {
+    "Nagano_Matsumoto": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -33688,12 +33683,12 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Nagano_Azumino": {
+    "Univ_Air": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
     },
-    "Nagano_Matsumoto": {
+    "Nagano_Azumino": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -33702,6 +33697,49 @@
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
+    },
+    "Tokyo_Bunkyo": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    }
+  },
+  "4873118018": {
+    "Nagano_Matsumoto": {
+      "status": "Cache",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Tokyo_Chiyoda": {
+      "status": "Cache",
+      "libkey": {
+        "日比谷": "貸出中"
+      },
+      "reserveurl": "https://opc.library.chiyoda.tokyo.jp/winj/opac/switch-detail-iccap.do?bibid=1140136217"
+    },
+    "Univ_Air": {
+      "status": "Cache",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Azumino": {
+      "status": "Cache",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Tokyo_Nerima": {
+      "status": "Cache",
+      "libkey": {
+        "練馬": "貸出可"
+      },
+      "reserveurl": "https://www.lib.nerima.tokyo.jp/opw/OPW/OPWSRCHTYPE.CSP?DB=LIB&FROMFLG=1&BID=B13457462"
+    },
+    "Tokyo_Bunkyo": {
+      "status": "Cache",
+      "libkey": {
+        "本郷": "貸出中"
+      },
+      "reserveurl": "https://opac.lib.city.bunkyo.tokyo.jp/opw/OPW/OPWSRCHTYPE.CSP?DB=LIB&FROMFLG=1&BID=B15545263"
     }
   }
 }

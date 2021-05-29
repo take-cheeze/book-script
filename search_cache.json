@@ -34073,5 +34073,50 @@
       "libkey": {},
       "reserveurl": ""
     }
+  },
+  "4309207944": {
+    "Tokyo_Bunkyo": {
+      "status": "Cache",
+      "libkey": {
+        "本郷": "貸出中"
+      },
+      "reserveurl": "https://opac.lib.city.bunkyo.tokyo.jp/opw/OPW/OPWSRCHTYPE.CSP?DB=LIB&FROMFLG=1&BID=B15633326"
+    },
+    "Univ_Air": {
+      "status": "Cache",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Matsumoto": {
+      "status": "Cache",
+      "libkey": {
+        "中央図書館": "貸出中"
+      },
+      "reserveurl": "https://opac.lib.city.matsumoto.lg.jp/WebOpac/webopac/searchdetail.do?biblioid=11019446#v2"
+    },
+    "Tokyo_Chiyoda": {
+      "status": "Cache",
+      "libkey": {
+        "千代田": "貸出中"
+      },
+      "reserveurl": "https://opc.library.chiyoda.tokyo.jp/winj/opac/switch-detail-iccap.do?bibid=1140187072"
+    },
+    "Nagano_Azumino": {
+      "status": "Cache",
+      "libkey": {
+        "中央図書館": "貸出可"
+      },
+      "reserveurl": "https://lib.city.azumino.nagano.jp/WebOpac/webopac/searchdetail.do?biblioid=10701585#v2"
+    },
+    "Tokyo_Nerima": {
+      "status": "Cache",
+      "libkey": {
+        "光が丘": "貸出中",
+        "石神井": "貸出中",
+        "関町": "貸出中",
+        "貫井": "貸出中"
+      },
+      "reserveurl": "https://www.lib.nerima.tokyo.jp/opw/OPW/OPWSRCHTYPE.CSP?DB=LIB&FROMFLG=1&BID=B13526201"
+    }
   }
 }

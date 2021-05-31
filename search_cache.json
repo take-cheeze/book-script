@@ -3140,6 +3140,41 @@
       "reserveurl": ""
     }
   },
+  "4048537652": {
+    "Tokyo_Bunkyo": {
+      "status": "Cache",
+      "libkey": {
+        "真砂中央": "貸出可",
+        "目白台": "貸出可"
+      },
+      "reserveurl": "https://opac.lib.city.bunkyo.tokyo.jp/opw/OPW/OPWSRCHTYPE.CSP?DB=LIB&FROMFLG=1&BID=B10466673"
+    },
+    "Nagano_Matsumoto": {
+      "status": "Cache",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Tokyo_Nerima": {
+      "status": "Cache",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Univ_Air": {
+      "status": "Cache",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Tokyo_Chiyoda": {
+      "status": "Cache",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Azumino": {
+      "status": "Cache",
+      "libkey": {},
+      "reserveurl": ""
+    }
+  },
   "4048657151": {
     "Tokyo_Nerima": {
       "status": "OK",

@@ -5178,12 +5178,17 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Univ_Air": {
+    "Nagano_Matsumoto": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
     },
-    "Nagano_Matsumoto": {
+    "Tokyo_Nerima": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Univ_Air": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -5194,11 +5199,6 @@
       "reserveurl": ""
     },
     "Nagano_Azumino": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
-    "Tokyo_Nerima": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

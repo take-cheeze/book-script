@@ -5173,7 +5173,7 @@
     }
   },
   "4065235464": {
-    "Tokyo_Bunkyo": {
+    "Nagano_Matsumoto": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -5183,12 +5183,12 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Nagano_Matsumoto": {
+    "Tokyo_Chiyoda": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
     },
-    "Tokyo_Chiyoda": {
+    "Tokyo_Bunkyo": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -34770,7 +34770,7 @@
     }
   },
   "4434217461": {
-    "Tokyo_Bunkyo": {
+    "Nagano_Matsumoto": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -34780,15 +34780,13 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Nagano_Matsumoto": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
     "Tokyo_Chiyoda": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
+    },
+    "Tokyo_Bunkyo": {
+      "status": "Error"
     },
     "Nagano_Azumino": {
       "status": "OK",

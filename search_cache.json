@@ -34898,5 +34898,47 @@
       "libkey": {},
       "reserveurl": ""
     }
+  },
+  "4492522328": {
+    "Nagano_Matsumoto": {
+      "status": "OK",
+      "libkey": {
+        "中央図書館": "貸出可"
+      },
+      "reserveurl": "https://opac.lib.city.matsumoto.lg.jp/WebOpac/webopac/searchdetail.do?biblioid=11084951#v2"
+    },
+    "Univ_Air": {
+      "status": "OK",
+      "libkey": {
+        "山形": "館内のみ"
+      },
+      "reserveurl": "https://catalog.ouj.ac.jp/?direct_key=BB10110563&action=pages_view_main&active_action=v3search_view_main_init&direct_target=catdbl&block_id=296"
+    },
+    "Tokyo_Chiyoda": {
+      "status": "OK",
+      "libkey": {
+        "千代田": "予約中"
+      },
+      "reserveurl": "https://opc.library.chiyoda.tokyo.jp/winj/opac/switch-detail-iccap.do?bibid=1140245630"
+    },
+    "Tokyo_Bunkyo": {
+      "status": "OK",
+      "libkey": {
+        "水道端": "貸出中"
+      },
+      "reserveurl": "https://opac.lib.city.bunkyo.tokyo.jp/opw/OPW/OPWSRCHTYPE.CSP?DB=LIB&FROMFLG=1&BID=B15732479"
+    },
+    "Nagano_Azumino": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Tokyo_Nerima": {
+      "status": "OK",
+      "libkey": {
+        "関町": "貸出中"
+      },
+      "reserveurl": "https://www.lib.nerima.tokyo.jp/opw/OPW/OPWSRCHTYPE.CSP?DB=LIB&FROMFLG=1&BID=B13603496"
+    }
   }
 }

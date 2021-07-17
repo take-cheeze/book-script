@@ -3106,6 +3106,40 @@
       "reserveurl": "https://opac.lib.city.matsumoto.lg.jp/WebOpac/webopac/searchdetail.do?biblioid=10903424#v2"
     }
   },
+  "4047331546": {
+    "Nagano_Azumino": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Tokyo_Bunkyo": {
+      "status": "OK",
+      "libkey": {
+        "本駒込": "貸出中"
+      },
+      "reserveurl": "https://opac.lib.city.bunkyo.tokyo.jp/opw/OPW/OPWSRCHTYPE.CSP?DB=LIB&FROMFLG=1&BID=B15024997"
+    },
+    "Univ_Air": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Tokyo_Nerima": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Tokyo_Chiyoda": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Matsumoto": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    }
+  },
   "4047352306": {
     "Nagano_Azumino": {
       "status": "OK",

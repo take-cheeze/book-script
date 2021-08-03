@@ -35349,7 +35349,7 @@
     }
   },
   "463415191X": {
-    "Nagano_Matsumoto": {
+    "Tokyo_Bunkyo": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -35359,15 +35359,13 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Tokyo_Chiyoda": {
+    "Nagano_Matsumoto": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
     },
-    "Tokyo_Bunkyo": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
+    "Tokyo_Chiyoda": {
+      "status": "Error"
     },
     "Nagano_Azumino": {
       "status": "OK",

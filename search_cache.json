@@ -35722,9 +35722,7 @@
   },
   "4627872216": {
     "Nagano_Azumino": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
+      "status": "Error"
     },
     "Tokyo_Bunkyo": {
       "status": "OK",
@@ -35747,9 +35745,7 @@
       "reserveurl": ""
     },
     "Nagano_Matsumoto": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
+      "status": "Error"
     }
   },
   "4772253262": {

@@ -36325,17 +36325,7 @@
     }
   },
   "4862465099": {
-    "Univ_Air": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
-    "Tokyo_Chiyoda": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
-    "Nagano_Azumino": {
+    "Tokyo_Nerima": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -36345,15 +36335,21 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Tokyo_Nerima": {
+    "Nagano_Azumino": {
+      "status": "Error"
+    },
+    "Tokyo_Chiyoda": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Univ_Air": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
     },
     "Nagano_Matsumoto": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
+      "status": "Error"
     }
   }
 }

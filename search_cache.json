@@ -36429,9 +36429,7 @@
       "reserveurl": ""
     },
     "Tokyo_Nerima": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
+      "status": "Error"
     },
     "Nagano_Matsumoto": {
       "status": "OK",

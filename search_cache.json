@@ -5276,7 +5276,7 @@
     }
   },
   "4065243270": {
-    "Nagano_Matsumoto": {
+    "Nagano_Azumino": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -5286,12 +5286,7 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Univ_Air": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
-    "Tokyo_Bunkyo": {
+    "Nagano_Matsumoto": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -5301,7 +5296,12 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Nagano_Azumino": {
+    "Tokyo_Bunkyo": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Univ_Air": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

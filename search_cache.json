@@ -3452,7 +3452,7 @@
     }
   },
   "4049140012": {
-    "Univ_Air": {
+    "Tokyo_Chiyoda": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -3462,12 +3462,12 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Tokyo_Nerima": {
+    "Tokyo_Bunkyo": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
     },
-    "Tokyo_Chiyoda": {
+    "Tokyo_Nerima": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -3477,7 +3477,7 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Tokyo_Bunkyo": {
+    "Univ_Air": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

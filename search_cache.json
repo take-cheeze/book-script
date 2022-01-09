@@ -37424,17 +37424,7 @@
     }
   },
   "B077XSB8BS": {
-    "Nagano_Azumino": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
     "Nagano_Matsumoto": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
-    "Univ_Air": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -37445,11 +37435,19 @@
       "reserveurl": ""
     },
     "Tokyo_Nerima": {
+      "status": "Error"
+    },
+    "Tokyo_Bunkyo": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
     },
-    "Tokyo_Bunkyo": {
+    "Nagano_Azumino": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Univ_Air": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

@@ -38006,9 +38006,7 @@
       "reserveurl": ""
     },
     "Tokyo_Bunkyo": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
+      "status": "Error"
     }
   },
   "4535789606": {

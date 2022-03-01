@@ -8200,6 +8200,74 @@
       "reserveurl": "https://opac.lib.city.matsumoto.lg.jp/WebOpac/webopac/searchdetail.do?biblioid=1314609#v2"
     }
   },
+  "4152100648": {
+    "Tokyo_Nerima": {
+      "status": "OK",
+      "libkey": {
+        "光が丘": "貸出中",
+        "練馬": "貸出中",
+        "石神井": "貸出中",
+        "平和台": "貸出中",
+        "大泉": "貸出中",
+        "関町": "貸出中",
+        "貫井": "貸出中",
+        "稲荷山": "貸出中",
+        "小竹": "貸出中",
+        "南大泉": "貸出中",
+        "春日町": "貸出中",
+        "南田中": "貸出中"
+      },
+      "reserveurl": "https://www.lib.nerima.tokyo.jp/opw/OPW/OPWSRCHTYPE.CSP?DB=LIB&FROMFLG=1&BID=B13707299"
+    },
+    "Nagano_Azumino": {
+      "status": "OK",
+      "libkey": {
+        "明科図書館": "予約中"
+      },
+      "reserveurl": "https://lib.city.azumino.nagano.jp/WebOpac/webopac/searchdetail.do?biblioid=10795884#v2"
+    },
+    "Tokyo_Bunkyo": {
+      "status": "OK",
+      "libkey": {
+        "真砂中央": "貸出中",
+        "本郷": "貸出中",
+        "小石川": "貸出中",
+        "本駒込": "貸出中",
+        "水道端": "貸出中",
+        "目白台": "貸出中",
+        "千石": "貸出中",
+        "湯島": "貸出中",
+        "根津": "貸出中",
+        "大塚": "貸出中"
+      },
+      "reserveurl": "https://opac.lib.city.bunkyo.tokyo.jp/opw/OPW/OPWSRCHTYPE.CSP?DB=LIB&FROMFLG=1&BID=B15856229"
+    },
+    "Tokyo_Chiyoda": {
+      "status": "OK",
+      "libkey": {
+        "昌平": "貸出中",
+        "神田": "貸出中"
+      },
+      "reserveurl": "https://opc.library.chiyoda.tokyo.jp/winj/opac/switch-detail-iccap.do?bibid=1140324079"
+    },
+    "Nagano_Matsumoto": {
+      "status": "OK",
+      "libkey": {
+        "中央図書館": "予約中",
+        "南部図書館": "貸出中",
+        "鎌田図書館": "予約中",
+        "寿台図書館": "貸出中",
+        "島内図書館": "貸出中",
+        "空港図書館": "予約中"
+      },
+      "reserveurl": "https://opac.lib.city.matsumoto.lg.jp/WebOpac/webopac/searchdetail.do?biblioid=11173306#v2"
+    },
+    "Univ_Air": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    }
+  },
   "4163180206": {
     "Tokyo_Nerima": {
       "status": "OK",
@@ -8786,6 +8854,44 @@
         "中央図書館": "貸出可"
       },
       "reserveurl": "https://opac.lib.city.matsumoto.lg.jp/WebOpac/webopac/searchdetail.do?biblioid=406216#v2"
+    }
+  },
+  "4167651106": {
+    "Tokyo_Nerima": {
+      "status": "OK",
+      "libkey": {
+        "大泉": "貸出可"
+      },
+      "reserveurl": "https://www.lib.nerima.tokyo.jp/opw/OPW/OPWSRCHTYPE.CSP?DB=LIB&FROMFLG=1&BID=B10121902"
+    },
+    "Nagano_Azumino": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Tokyo_Bunkyo": {
+      "status": "OK",
+      "libkey": {
+        "真砂中央": "貸出可"
+      },
+      "reserveurl": "https://opac.lib.city.bunkyo.tokyo.jp/opw/OPW/OPWSRCHTYPE.CSP?DB=LIB&FROMFLG=1&BID=B10126621"
+    },
+    "Tokyo_Chiyoda": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Matsumoto": {
+      "status": "OK",
+      "libkey": {
+        "中央図書館": "貸出可"
+      },
+      "reserveurl": "https://opac.lib.city.matsumoto.lg.jp/WebOpac/webopac/searchdetail.do?biblioid=330985#v2"
+    },
+    "Univ_Air": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
     }
   },
   "4167651157": {

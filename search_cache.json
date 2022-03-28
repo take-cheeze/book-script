@@ -38541,5 +38541,119 @@
     "Nagano_Matsumoto": {
       "status": "Error"
     }
+  },
+  "4798627364": {
+    "Univ_Air": {
+      "status": "Cache",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Matsumoto": {
+      "status": "Cache",
+      "libkey": {
+        "中央図書館": "貸出中",
+        "南部図書館": "貸出中"
+      },
+      "reserveurl": "https://opac.lib.city.matsumoto.lg.jp/WebOpac/webopac/searchdetail.do?biblioid=11198291#v2"
+    },
+    "Tokyo_Bunkyo": {
+      "status": "Cache",
+      "libkey": {
+        "真砂中央": "貸出中"
+      },
+      "reserveurl": "https://opac.lib.city.bunkyo.tokyo.jp/opw/OPW/OPWSRCHTYPE.CSP?DB=LIB&FROMFLG=1&BID=B15890608"
+    },
+    "Nagano_Azumino": {
+      "status": "Cache",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Tokyo_Nerima": {
+      "status": "Cache",
+      "libkey": {
+        "平和台": "準備中"
+      },
+      "reserveurl": "https://www.lib.nerima.tokyo.jp/opw/OPW/OPWSRCHTYPE.CSP?DB=LIB&FROMFLG=1&BID=B13738332"
+    },
+    "Tokyo_Chiyoda": {
+      "status": "Cache",
+      "libkey": {},
+      "reserveurl": ""
+    }
+  },
+  "4799327526": {
+    "Univ_Air": {
+      "status": "OK",
+      "libkey": {
+        "山梨": "館内のみ"
+      },
+      "reserveurl": "https://catalog.ouj.ac.jp/?direct_key=BB10116516&action=pages_view_main&active_action=v3search_view_main_init&direct_target=catdbl&block_id=296"
+    },
+    "Nagano_Matsumoto": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Tokyo_Bunkyo": {
+      "status": "OK",
+      "libkey": {
+        "真砂中央": "貸出中",
+        "千石": "貸出中"
+      },
+      "reserveurl": "https://opac.lib.city.bunkyo.tokyo.jp/opw/OPW/OPWSRCHTYPE.CSP?DB=LIB&FROMFLG=1&BID=B15807867"
+    },
+    "Nagano_Azumino": {
+      "status": "OK",
+      "libkey": {
+        "中央図書館": "貸出可"
+      },
+      "reserveurl": "https://lib.city.azumino.nagano.jp/WebOpac/webopac/searchdetail.do?biblioid=10775120#v2"
+    },
+    "Tokyo_Nerima": {
+      "status": "OK",
+      "libkey": {
+        "貫井": "貸出中"
+      },
+      "reserveurl": "https://www.lib.nerima.tokyo.jp/opw/OPW/OPWSRCHTYPE.CSP?DB=LIB&FROMFLG=1&BID=B13666061"
+    },
+    "Tokyo_Chiyoda": {
+      "status": "OK",
+      "libkey": {
+        "千代田": "貸出中"
+      },
+      "reserveurl": "https://opc.library.chiyoda.tokyo.jp/winj/opac/switch-detail-iccap.do?bibid=1140292886"
+    }
+  },
+  "4641164746": {
+    "Univ_Air": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Matsumoto": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Tokyo_Bunkyo": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Azumino": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Tokyo_Nerima": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Tokyo_Chiyoda": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    }
   }
 }

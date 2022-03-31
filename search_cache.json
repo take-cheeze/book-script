@@ -996,6 +996,74 @@
       "reserveurl": ""
     }
   },
+  "4000614134": {
+    "Univ_Air": {
+      "status": "OK",
+      "libkey": {
+        "本部": "貸出中",
+        "京都": "館内のみ"
+      },
+      "reserveurl": "https://catalog.ouj.ac.jp/?direct_key=BB10108118&action=pages_view_main&active_action=v3search_view_main_init&direct_target=catdbl&block_id=296"
+    },
+    "Nagano_Matsumoto": {
+      "status": "OK",
+      "libkey": {
+        "中央図書館": "貸出可",
+        "あがたの森": "貸出可",
+        "空港図書館": "貸出中"
+      },
+      "reserveurl": "https://opac.lib.city.matsumoto.lg.jp/WebOpac/webopac/searchdetail.do?biblioid=11050138#v2"
+    },
+    "Tokyo_Bunkyo": {
+      "status": "OK",
+      "libkey": {
+        "真砂中央": "貸出中",
+        "本郷": "貸出中",
+        "小石川": "貸出中",
+        "本駒込": "貸出中",
+        "水道端": "貸出中",
+        "目白台": "貸出中",
+        "千石": "貸出中",
+        "湯島": "貸出中",
+        "根津": "貸出中",
+        "大塚": "貸出中"
+      },
+      "reserveurl": "https://opac.lib.city.bunkyo.tokyo.jp/opw/OPW/OPWSRCHTYPE.CSP?DB=LIB&FROMFLG=1&BID=B15679609"
+    },
+    "Tokyo_Nerima": {
+      "status": "OK",
+      "libkey": {
+        "光が丘": "貸出中",
+        "練馬": "貸出中",
+        "石神井": "貸出中",
+        "平和台": "貸出中",
+        "大泉": "貸出中",
+        "関町": "貸出中",
+        "貫井": "貸出中",
+        "稲荷山": "貸出中",
+        "小竹": "貸出中",
+        "南大泉": "貸出中",
+        "春日町": "貸出中",
+        "南田中": "貸出中"
+      },
+      "reserveurl": "https://www.lib.nerima.tokyo.jp/opw/OPW/OPWSRCHTYPE.CSP?DB=LIB&FROMFLG=1&BID=B13563209"
+    },
+    "Tokyo_Chiyoda": {
+      "status": "OK",
+      "libkey": {
+        "千代田": "予約中",
+        "日比谷": "貸出中"
+      },
+      "reserveurl": "https://opc.library.chiyoda.tokyo.jp/winj/opac/switch-detail-iccap.do?bibid=1140215254"
+    },
+    "Nagano_Azumino": {
+      "status": "OK",
+      "libkey": {
+        "中央図書館": "貸出可"
+      },
+      "reserveurl": "https://lib.city.azumino.nagano.jp/WebOpac/webopac/searchdetail.do?biblioid=10721812#v2"
+    }
+  },
   "4000904221": {
     "Tokyo_Nerima": {
       "status": "OK",
@@ -38731,17 +38799,7 @@
     }
   },
   "4785631465": {
-    "Tokyo_Nerima": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
-    "Tokyo_Bunkyo": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
-    "Tokyo_Chiyoda": {
+    "Univ_Air": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -38751,7 +38809,17 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Univ_Air": {
+    "Tokyo_Bunkyo": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Tokyo_Nerima": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Tokyo_Chiyoda": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

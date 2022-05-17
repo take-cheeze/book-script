@@ -39354,6 +39354,11 @@
       "libkey": {},
       "reserveurl": ""
     },
+    "Nagano_Azumino": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
     "Tokyo_Bunkyo": {
       "status": "OK",
       "libkey": {},
@@ -39370,11 +39375,6 @@
       "reserveurl": ""
     },
     "Univ_Air": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
-    "Nagano_Azumino": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

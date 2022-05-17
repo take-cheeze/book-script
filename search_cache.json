@@ -39349,7 +39349,7 @@
     }
   },
   "4339032409": {
-    "Tokyo_Nerima": {
+    "Tokyo_Chiyoda": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -39364,17 +39364,17 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Tokyo_Chiyoda": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
-    "Nagano_Matsumoto": {
+    "Tokyo_Nerima": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
     },
     "Univ_Air": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Matsumoto": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

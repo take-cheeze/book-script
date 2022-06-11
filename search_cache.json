@@ -39530,14 +39530,10 @@
   },
   "B0B2J7V2LY": {
     "Nagano_Azumino": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
+      "status": "Error"
     },
     "Nagano_Matsumoto": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
+      "status": "Error"
     },
     "Tokyo_Nerima": {
       "status": "OK",

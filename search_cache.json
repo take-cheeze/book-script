@@ -40052,12 +40052,12 @@
     }
   },
   "4908468605": {
-    "Nagano_Azumino": {
+    "Nagano_Matsumoto": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
     },
-    "Nagano_Matsumoto": {
+    "Tokyo_Chiyoda": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -40067,7 +40067,7 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Univ_Air": {
+    "Nagano_Azumino": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -40077,7 +40077,7 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Tokyo_Chiyoda": {
+    "Univ_Air": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cheerio": "^0.22.0",
+    "cheerio": "^1.0.0-rc.12",
     "csv": ">=4.4.6",
     "isbn": "^0.4.0",
     "node-fetch": "^2.6.7",

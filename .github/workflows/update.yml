@@ -25,6 +25,7 @@ jobs:
     - run: git rm docs/*.html
     - run: npm run main
     - run: npm run render
+    - run: mkdir -p docs
     - run: |
         if ! git diff --exit-code >/dev/null ; then
           git config --global user.email take-cheeze@users.noreply.github.com

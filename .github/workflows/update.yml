@@ -22,14 +22,14 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
-    - run: rm docs/*.html
+    - run: git rm docs/*.html
     - run: npm run main
     - run: npm run render
     - run: |
         if ! git diff --exit-code >/dev/null ; then
           git config --global user.email take-cheeze@users.noreply.github.com
           git config --global user.name "take-cheeze bot"
-          git add docs/*.html
+          git add docs/*.html search_cache.json
           git commit -m "Update book list"
           git push https://take-cheeze:{{secrets.GITHUB_TOKEN}}@github.com/${GITHUB_REPOSITORY}.git master
         fi

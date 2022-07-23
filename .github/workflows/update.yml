@@ -29,7 +29,7 @@ jobs:
     - run: |
         git add docs/*.html search_cache.json
         git status
-        if ! git diff --exit-code >/dev/null ; then
+        if ! git diff --exit-code --quiet HEAD >/dev/null ; then
           git config --global user.email take-cheeze@users.noreply.github.com
           git config --global user.name "take-cheeze bot"
           git commit -m "Update book list"

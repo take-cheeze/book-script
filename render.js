@@ -85,7 +85,7 @@ const library_template = `
               <% if (library !== "should_buy") { %>
                 <a href="<%= b['予約URL'] %>" target="_blank" class="btn btn-primary">Reserve</a>
               <% } else { %>
-                <a href="https://amazon.co.jp/dp/<%= b['ISBN'] %>" target="_blank" class="btn btn-warning">Amazozn</a>
+                <a href="https://amazon.co.jp/dp/<%= b['ISBN'] %>" target="_blank" class="btn btn-warning">Amazon</a>
                 <a href="https://www.e-hon.ne.jp/bec/SA/Forward?spKeyword=<%= b['ISBN'] %>&button=btnSpeed&mode=kodawari_header&ctlB9Flg=1" target="_blank" class="btn btn-info">e-hon</a>
               <% } %>
             </td>

@@ -38651,5 +38651,40 @@
       "libkey": {},
       "reserveurl": ""
     }
+  },
+  "4642014500": {
+    "Nagano_Ueda": {
+      "status": "OK",
+      "libkey": {
+        "上田図書館": "館内のみ",
+        "丸子図書館": "貸出可",
+        "真田図書館": "館内のみ"
+      },
+      "reserveurl": "https://opac.echol.gr.jp/WebOpac/webopac/searchdetail.do?biblioid=1498895#v2"
+    },
+    "Univ_Air": {
+      "status": "OK",
+      "libkey": {
+        "群馬": "館内のみ",
+        "福井": "館内のみ",
+        "奈良": "館内のみ"
+      },
+      "reserveurl": "https://catalog.ouj.ac.jp/?direct_key=BB10017518&action=pages_view_main&active_action=v3search_view_main_init&direct_target=catdbl&block_id=296"
+    },
+    "Nagano_Azumino": {
+      "status": "OK",
+      "libkey": {
+        "中央図書館": "貸出可",
+        "豊科図書館": "貸出可"
+      },
+      "reserveurl": "https://lib.city.azumino.nagano.jp/WebOpac/webopac/searchdetail.do?biblioid=1210784#v2"
+    },
+    "Nagano_Matsumoto": {
+      "status": "OK",
+      "libkey": {
+        "中央図書館": "貸出可"
+      },
+      "reserveurl": "https://opac.lib.city.matsumoto.lg.jp/WebOpac/webopac/searchdetail.do?biblioid=1010050#v2"
+    }
   }
 }

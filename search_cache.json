@@ -3620,6 +3620,11 @@
     }
   },
   "4049144581": {
+    "Nagano_Ueda": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
     "Univ_Air": {
       "status": "OK",
       "libkey": {},
@@ -3631,17 +3636,17 @@
       "reserveurl": ""
     },
     "Nagano_Matsumoto": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
-    "Nagano_Ueda": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
     }
   },
   "4049146185": {
+    "Nagano_Ueda": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
     "Univ_Air": {
       "status": "OK",
       "libkey": {},
@@ -3653,11 +3658,6 @@
       "reserveurl": ""
     },
     "Nagano_Matsumoto": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
-    "Nagano_Ueda": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

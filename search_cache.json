@@ -39105,11 +39105,6 @@
     }
   },
   "4320114825": {
-    "Nagano_Ueda": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
     "Nagano_Azumino": {
       "status": "OK",
       "libkey": {},
@@ -39121,6 +39116,11 @@
       "reserveurl": ""
     },
     "Nagano_Matsumoto": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Ueda": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

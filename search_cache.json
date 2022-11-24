@@ -39121,5 +39121,29 @@
       "libkey": {},
       "reserveurl": ""
     }
+  },
+  "4903063453": {
+    "Nagano_Matsumoto": {
+      "status": "Cache",
+      "libkey": {
+        "中央図書館": "貸出可"
+      },
+      "reserveurl": "https://opac.lib.city.matsumoto.lg.jp/WebOpac/webopac/searchdetail.do?biblioid=1184950#v2"
+    },
+    "Nagano_Ueda": {
+      "status": "Cache",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Azumino": {
+      "status": "Cache",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Univ_Air": {
+      "status": "Cache",
+      "libkey": {},
+      "reserveurl": ""
+    }
   }
 }

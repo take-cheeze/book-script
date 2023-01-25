@@ -11137,6 +11137,28 @@
       "reserveurl": ""
     }
   },
+  "4274227510": {
+    "Nagano_Matsumoto": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Ueda": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Azumino": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Univ_Air": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    }
+  },
   "4274227855": {
     "Nagano_Ueda": {
       "status": "OK",
@@ -11228,7 +11250,17 @@
     }
   },
   "4274229483": {
+    "Nagano_Matsumoto": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
     "Nagano_Ueda": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Azumino": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -11237,13 +11269,25 @@
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
-    },
+    }
+  },
+  "4274229866": {
     "Nagano_Matsumoto": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
     },
+    "Nagano_Ueda": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
     "Nagano_Azumino": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Univ_Air": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

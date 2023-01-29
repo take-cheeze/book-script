@@ -39441,11 +39441,6 @@
     }
   },
   "4499229219": {
-    "Univ_Air": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
     "Nagano_Matsumoto": {
       "status": "OK",
       "libkey": {},
@@ -39460,6 +39455,9 @@
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
+    },
+    "Univ_Air": {
+      "status": "Error"
     }
   }
 }

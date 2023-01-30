@@ -39461,17 +39461,7 @@
     }
   },
   "462130772X": {
-    "Nagano_Matsumoto": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
     "Nagano_Ueda": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
-    "Nagano_Azumino": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -39480,6 +39470,12 @@
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
+    },
+    "Nagano_Matsumoto": {
+      "status": "Error"
+    },
+    "Nagano_Azumino": {
+      "status": "Error"
     }
   }
 }

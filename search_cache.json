@@ -5597,6 +5597,33 @@
       "status": "Error"
     }
   },
+  "4065306795": {
+    "Nagano_Ueda": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Univ_Air": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Matsumoto": {
+      "status": "OK",
+      "libkey": {
+        "あがたの森": "予約中",
+        "波田図書館": "予約中"
+      },
+      "reserveurl": "https://opac.lib.city.matsumoto.lg.jp/WebOpac/webopac/searchdetail.do?biblioid=11271140#v2"
+    },
+    "Nagano_Azumino": {
+      "status": "OK",
+      "libkey": {
+        "三郷図書館": "貸出中"
+      },
+      "reserveurl": "https://lib.city.azumino.nagano.jp/WebOpac/webopac/searchdetail.do?biblioid=10858243#v2"
+    }
+  },
   "4073120247": {
     "Nagano_Matsumoto": {
       "status": "OK",

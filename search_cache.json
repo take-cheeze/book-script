@@ -39584,7 +39584,7 @@
     }
   },
   "B0BDS3G2RT": {
-    "Nagano_Ueda": {
+    "Nagano_Matsumoto": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -39599,7 +39599,7 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Nagano_Matsumoto": {
+    "Nagano_Ueda": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

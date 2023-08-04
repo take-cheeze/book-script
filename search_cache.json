@@ -39620,6 +39620,11 @@
     }
   },
   "4791775732": {
+    "Nagano_Matsumoto": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
     "Univ_Air": {
       "status": "OK",
       "libkey": {},
@@ -39631,11 +39636,6 @@
       "reserveurl": ""
     },
     "Nagano_Ueda": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
-    "Nagano_Matsumoto": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

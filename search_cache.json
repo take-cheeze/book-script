@@ -9897,22 +9897,22 @@
     }
   },
   "4257620331": {
-    "Nagano_Ueda": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
     "Univ_Air": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
     },
-    "Nagano_Matsumoto": {
+    "Nagano_Ueda": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
     },
     "Nagano_Azumino": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Matsumoto": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

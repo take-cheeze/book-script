@@ -39746,5 +39746,29 @@
       "libkey": {},
       "reserveurl": ""
     }
+  },
+  "4416922205": {
+    "Univ_Air": {
+      "status": "OK",
+      "libkey": {
+        "本部": "貸出中"
+      },
+      "reserveurl": "https://catalog.ouj.ac.jp/?direct_key=BB10129812&action=pages_view_main&active_action=v3search_view_main_init&direct_target=catdbl&block_id=296"
+    },
+    "Nagano_Azumino": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Matsumoto": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Ueda": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    }
   }
 }

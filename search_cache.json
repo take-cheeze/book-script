@@ -39772,12 +39772,12 @@
     }
   },
   "B0CN6CZRZV": {
-    "Univ_Air": {
+    "Nagano_Ueda": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
     },
-    "Nagano_Azumino": {
+    "Univ_Air": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -39787,7 +39787,7 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Nagano_Ueda": {
+    "Nagano_Azumino": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

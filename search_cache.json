@@ -39940,12 +39940,7 @@
     }
   },
   "B0D9PS8WPN": {
-    "Nagano_Matsumoto": {
-      "status": "OK",
-      "libkey": {},
-      "reserveurl": ""
-    },
-    "Nagano_Ueda": {
+    "Univ_Air": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -39955,7 +39950,12 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Univ_Air": {
+    "Nagano_Matsumoto": {
+      "status": "OK",
+      "libkey": {},
+      "reserveurl": ""
+    },
+    "Nagano_Ueda": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

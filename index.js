@@ -74,7 +74,9 @@ function output_book_list() {
                             url, book.image_2x]);
 
             price = price || '0';
-            price = price.replace(/^￥ /, '').replace(/,/g, '');
+            if (isNaN(price)) {
+                price = price.replace(/^￥ /, '').replace(/,/g, '');
+            }
             price_sum += parseInt(price);
         }
     });

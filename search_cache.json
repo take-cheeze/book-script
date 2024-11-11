@@ -40106,7 +40106,7 @@
     }
   },
   "4621086588": {
-    "Nagano_Azumino": {
+    "Nagano_Matsumoto": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""
@@ -40116,7 +40116,7 @@
       "libkey": {},
       "reserveurl": ""
     },
-    "Nagano_Matsumoto": {
+    "Nagano_Azumino": {
       "status": "OK",
       "libkey": {},
       "reserveurl": ""

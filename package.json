@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
-    "csv": ">=4.4.6",
+    "csv": ">=6.6.3",
     "isbn": "^0.4.0",
     "node-fetch": "^2.6.7",
     "underscore": "^1.13.8"

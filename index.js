@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const fetch = require('node-fetch'),
+const fetch = globalThis.fetch || require('node-fetch'),
       fs = require('fs'),
       stringify = require('csv-stringify/lib/sync'),
       ISBN = require('isbn').ISBN;
@@ -52,7 +52,10 @@ function output_book_list() {
     config.libraries.forEach((library) => {
         const res = [csv_header];
         books.forEach((book) => {
-            const cache = search_cache[book.id][library];
+            const bookCache = search_cache[book.id];
+            if (!bookCache) return; // not yet searched, skip
+            const cache = bookCache[library];
+            if (!cache) return; // library not in cache for this book
             if (!already_found[book.id] && cache.status !== 'Error' && owned_in_library(cache)) {
                 res.push([book.id, book.title, book.item.author, book.item.publisher,
                           book.item.release_date, book.item.pages, book.item.price || book.item.savedPrice,
@@ -176,15 +179,51 @@ function continue_session(session, books, table, search_cache) {
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 async function fetch_wanted_books() {
+    const MAX_RETRIES = 3;
+
+    // Try the primary paginated endpoint, retrying on 202 (WAF challenge)
+    async function fetch_page(page) {
+        const url = `https://booklog.jp/users/${config.booklog_id}/all?category_id=all&status=1&json=true&page=${page}`;
+        for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+            const res = await fetch(url, { headers: DEFAULT_HEADERS });
+            if (res.status === 202) {
+                console.warn(`Received 202 (WAF challenge) from ${url}, attempt ${attempt + 1}/${MAX_RETRIES + 1}`);
+                console.warn('Response headers:', Object.fromEntries(res.headers.entries()));
+                if (attempt >= MAX_RETRIES) {
+                    return null; // signal fallback needed
+                }
+                await sleep(2000);
+                continue;
+            }
+            if (!res.ok) {
+                throw new Error(`Failed to fetch booklog page ${page}: ${res.status} ${res.statusText}`);
+            }
+            const text = await res.text();
+            if (!text.trim()) {
+                throw new Error(`Empty response from ${url} (status: ${res.status})`);
+            }
+            try {
+                return JSON.parse(text);
+            } catch (err) {
+                console.error(`Invalid JSON from ${url} (status ${res.status}):`, text.slice(0, 500));
+                throw err;
+            }
+        }
+        return null;
+    }
+
+    // Try primary endpoint with pagination
     let books = [];
     let page = 1;
+    let usedFallback = false;
     while (true) {
-        const url = `https://booklog.jp/users/${config.booklog_id}/all?category_id=all&status=1&json=true&page=${page}`;
-        const res = await fetch(url, { headers: DEFAULT_HEADERS });
-        if (!res.ok) {
-            throw new Error(`Failed to fetch booklog page ${page}: ${res.status} ${res.statusText}`);
+        const data = await fetch_page(page);
+        if (data === null) {
+            // Persistent 202 — fall back to alternative API
+            console.warn(`Falling back to alternative API after persistent 202 responses.`);
+            usedFallback = true;
+            break;
         }
-        const data = await res.json();
         if (!data.books || data.books.length === 0) {
             break;
         }
@@ -194,6 +233,41 @@ async function fetch_wanted_books() {
             await sleep(config.search_interval);
         }
     }
+
+    if (usedFallback) {
+        const altUrl = `https://api.booklog.jp/v2/json/${config.booklog_id}?status=1&count=200`;
+        console.info(`Fetching from alternative endpoint: ${altUrl}`);
+        const altRes = await fetch(altUrl, { headers: DEFAULT_HEADERS });
+        if (!altRes.ok) {
+            throw new Error(`Alternative API failed: ${altRes.status} ${altRes.statusText}`);
+        }
+        const altData = await altRes.json();
+        if (!altData.books || !Array.isArray(altData.books)) {
+            throw new Error('Alternative API returned unexpected data');
+        }
+        // Normalize sparse alternative-API books into the shape expected by downstream code.
+        // Primary API shape: { id (ISBN), title, image, image_2x, item: { author, publisher, ... } }
+        // Alternative API shape: { url, title, image, catalog }
+        // The ISBN is the last path segment of the URL: .../archives/1/<ISBN>
+        books = altData.books.map((b) => {
+            const id = b.url ? b.url.split('/').pop() : '';
+            return {
+                id,
+                title: b.title || '',
+                image: b.image || '',
+                image_2x: b.image || '',
+                item: {
+                    author: '',
+                    publisher: '',
+                    release_date: null,
+                    pages: null,
+                    price: null,
+                    savedPrice: null,
+                },
+            };
+        }).filter(b => b.id); // discard any entries where we couldn't extract an ISBN
+    }
+
     return books;
 }
 

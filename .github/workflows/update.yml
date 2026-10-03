@@ -5,6 +5,7 @@ on:
     branches: [ master ]
   schedule:
     - cron: "0 * * * *"
+  workflow_dispatch:
 
 jobs:
   build:
@@ -12,6 +13,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
+      with:
+        node-version: 22
     - run: npm ci
     - run: git rm docs/*.html
     - run: mkdir -p docs

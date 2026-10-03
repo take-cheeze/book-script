@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
-const cheerio = require('cheerio'),
-      fetch = require('node-fetch'),
+const fetch = require('node-fetch'),
       fs = require('fs'),
-      csv = require('csv'),
+      stringify = require('csv-stringify/lib/sync'),
       ISBN = require('isbn').ISBN;
 
 const config = JSON.parse(fs.readFileSync(`${__dirname}/config.json`));
@@ -12,7 +11,17 @@ if (process.env.CALIL_APPKEY) {
 }
 const search_cache_path = `${__dirname}/search_cache.json`;
 
-process.on('unhandledRejection', console.dir);
+const DEFAULT_HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36',
+    'Accept': 'application/json, text/plain, */*',
+    'Accept-Language': 'ja,en-US;q=0.9,en;q=0.8',
+    'Referer': `https://booklog.jp/users/${config.booklog_id}`
+};
+
+process.on('unhandledRejection', (err) => {
+    console.error('Unhandled rejection:', err);
+    process.exit(1);
+});
 
 function owned_in_library(cache_ent) {
     return Object.keys(cache_ent.libkey).length > 0;
@@ -53,11 +62,9 @@ function output_book_list() {
         });
 
         console.log(`${library} books count: ${res.length - 1}`);
-        csv.stringify(res, (err, output) => {
-            if (err) { console.log(err); }
-            fs.writeFileSync(`${__dirname}/result/${library}.csv`, output);
-        });
-        fs.writeFileSync(`${__dirname}/result/${library}.json`, to_json(res.slice(1, -1).map(csv_to_json)));
+        const output = stringify(res);
+        fs.writeFileSync(`${__dirname}/result/${library}.csv`, output);
+        fs.writeFileSync(`${__dirname}/result/${library}.json`, to_json(res.slice(1).map(csv_to_json)));
     });
 
     const not_found = [csv_header];
@@ -83,11 +90,9 @@ function output_book_list() {
 
     console.log(`Books not in library count: ${not_found.length - 1}`);
     console.log(`Need ￥${price_sum.toLocaleString()} to buy all books not in library.`);
-    csv.stringify(not_found, (err, output) => {
-        if (err) { console.log(err); }
-        fs.writeFileSync(`${__dirname}/result/should_buy.csv`, output);
-    });
-    fs.writeFileSync(`${__dirname}/result/should_buy.json`, to_json(not_found.slice(1, -1).map(csv_to_json)));
+    const output = stringify(not_found);
+    fs.writeFileSync(`${__dirname}/result/should_buy.csv`, output);
+    fs.writeFileSync(`${__dirname}/result/should_buy.json`, to_json(not_found.slice(1).map(csv_to_json)));
 }
 
 function search_libraries(books, table = null, search_cache = null) {
@@ -132,21 +137,29 @@ function search_libraries(books, table = null, search_cache = null) {
 
     const isbns = books.splice(0, config.per_search).map((v) => v.id);
     console.log(`searching ISBNs (${books.length} left): ${isbns}`);
-    fetch(`https://api.calil.jp/check?appkey=${config.calil_api_key}&isbn=${isbns.join(',')}&systemid=${config.libraries.join(',')}&format=json&callback=no`)
+    fetch(`https://api.calil.jp/check?appkey=${config.calil_api_key}&isbn=${isbns.join(',')}&systemid=${config.libraries.join(',')}&format=json&callback=no`, { headers: DEFAULT_HEADERS })
         .then((v) => v.json())
         .then((json) => {
             continue_session(json, books, table, search_cache);
+        })
+        .catch((err) => {
+            console.error('Error querying Calil API:', err);
+            process.exit(1);
         });
 }
 
 function continue_session(session, books, table, search_cache) {
     if (session.continue === 1) {
         process.stdout.write('.');
-        fetch(`https://api.calil.jp/check?appkey=${config.calil_api_key}&session=${session.session}&format=json&callback=no`)
+        fetch(`https://api.calil.jp/check?appkey=${config.calil_api_key}&session=${session.session}&format=json&callback=no`, { headers: DEFAULT_HEADERS })
             .then((v) => v.json())
             .then((json) => {
                 setTimeout(() => { continue_session(json, books, table, search_cache); },
                            config.search_interval);
+            })
+            .catch((err) => {
+                console.error('Error continuing Calil session:', err);
+                process.exit(1);
             });
     } else {
         console.log('');
@@ -160,27 +173,39 @@ function continue_session(session, books, table, search_cache) {
     }
 }
 
-// Check calil api key works
-fetch(`https://api.calil.jp/library?appkey=${config.calil_api_key}&geocode=136.7163027,35.390516&limit=1&format=json&callback=`).then((v) => v.text())
-    .then((body) => {
-        fetch(`http://booklog.jp/users/${config.booklog_id}`).then((v) => v.text())
-            .then((body) => {
-                const $ = cheerio.load(body);
-                const per_page = 25;
-                const wanted = parseInt(JSON.parse($('#shelf')[0].attribs['data-shelf-stats']).statuses[1]);
-                const booklog_len = Math.ceil(wanted / per_page);
-                let res = [], count = 0;
-                Array.apply(null, {length: booklog_len}).map(Number.call, Number).forEach((v) => {
-                    fetch(`http://booklog.jp/users/${config.booklog_id}/all?category_id=all&status=1&json=true&page=${v + 1}`)
-                        .then((v) => v.json())
-                        .then((v) => {
-                            res = res.concat(v.books);
-                            if (++count >= booklog_len) {
-                                console.log(`Wanted books total count: ${res.length}`);
-                                fs.writeFileSync(`${__dirname}/result/wanted_books.json`, to_json(res));
-                                search_libraries(res);
-                            }
-                        });
-                });
-            });
-    });
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+async function fetch_wanted_books() {
+    let books = [];
+    let page = 1;
+    while (true) {
+        const url = `https://booklog.jp/users/${config.booklog_id}/all?category_id=all&status=1&json=true&page=${page}`;
+        const res = await fetch(url, { headers: DEFAULT_HEADERS });
+        if (!res.ok) {
+            throw new Error(`Failed to fetch booklog page ${page}: ${res.status} ${res.statusText}`);
+        }
+        const data = await res.json();
+        if (!data.books || data.books.length === 0) {
+            break;
+        }
+        books = books.concat(data.books);
+        page++;
+        if (config.search_interval) {
+            await sleep(config.search_interval);
+        }
+    }
+    return books;
+}
+
+(async () => {
+    try {
+        fs.mkdirSync(`${__dirname}/result`, { recursive: true });
+        const books = await fetch_wanted_books();
+        console.log(`Wanted books total count: ${books.length}`);
+        fs.writeFileSync(`${__dirname}/result/wanted_books.json`, to_json(books));
+        search_libraries(books);
+    } catch (err) {
+        console.error('Fatal error:', err);
+        process.exit(1);
+    }
+})();

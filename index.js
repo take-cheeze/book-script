@@ -176,24 +176,50 @@ function continue_session(session, books, table, search_cache) {
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 async function fetch_wanted_books() {
+    const MAX_RETRIES = 3;
+
+    // Try the primary paginated endpoint, retrying on 202 (WAF challenge)
+    async function fetch_page(page) {
+        const url = `https://booklog.jp/users/${config.booklog_id}/all?category_id=all&status=1&json=true&page=${page}`;
+        for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+            const res = await fetch(url, { headers: DEFAULT_HEADERS });
+            if (res.status === 202) {
+                console.warn(`Received 202 (WAF challenge) from ${url}, attempt ${attempt + 1}/${MAX_RETRIES + 1}`);
+                console.warn('Response headers:', Object.fromEntries(res.headers.entries()));
+                if (attempt >= MAX_RETRIES) {
+                    return null; // signal fallback needed
+                }
+                await sleep(2000);
+                continue;
+            }
+            if (!res.ok) {
+                throw new Error(`Failed to fetch booklog page ${page}: ${res.status} ${res.statusText}`);
+            }
+            const text = await res.text();
+            if (!text.trim()) {
+                throw new Error(`Empty response from ${url} (status: ${res.status})`);
+            }
+            try {
+                return JSON.parse(text);
+            } catch (err) {
+                console.error(`Invalid JSON from ${url} (status ${res.status}):`, text.slice(0, 500));
+                throw err;
+            }
+        }
+        return null;
+    }
+
+    // Try primary endpoint with pagination
     let books = [];
     let page = 1;
+    let usedFallback = false;
     while (true) {
-        const url = `https://booklog.jp/users/${config.booklog_id}/all?category_id=all&status=1&json=true&page=${page}`;
-        const res = await fetch(url, { headers: DEFAULT_HEADERS });
-        if (!res.ok) {
-            throw new Error(`Failed to fetch booklog page ${page}: ${res.status} ${res.statusText}`);
-        }
-        const text = await res.text();
-        if (!text.trim()) {
-            throw new Error(`Empty response from ${url} (status: ${res.status})`);
-        }
-        let data;
-        try {
-            data = JSON.parse(text);
-        } catch (err) {
-            console.error(`Invalid JSON from ${url} (status ${res.status}):`, text.slice(0, 500));
-            throw err;
+        const data = await fetch_page(page);
+        if (data === null) {
+            // Persistent 202 — fall back to alternative API
+            console.warn(`Falling back to alternative API after persistent 202 responses.`);
+            usedFallback = true;
+            break;
         }
         if (!data.books || data.books.length === 0) {
             break;
@@ -204,6 +230,21 @@ async function fetch_wanted_books() {
             await sleep(config.search_interval);
         }
     }
+
+    if (usedFallback) {
+        const altUrl = `https://api.booklog.jp/v2/json/${config.booklog_id}?status=1&count=200`;
+        console.info(`Fetching from alternative endpoint: ${altUrl}`);
+        const altRes = await fetch(altUrl, { headers: DEFAULT_HEADERS });
+        if (!altRes.ok) {
+            throw new Error(`Alternative API failed: ${altRes.status} ${altRes.statusText}`);
+        }
+        const altData = await altRes.json();
+        if (!altData.books || !Array.isArray(altData.books)) {
+            throw new Error('Alternative API returned unexpected data');
+        }
+        books = altData.books;
+    }
+
     return books;
 }
 

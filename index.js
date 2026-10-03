@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const fetch = require('node-fetch'),
+const fetch = globalThis.fetch || require('node-fetch'),
       fs = require('fs'),
       stringify = require('csv-stringify/lib/sync'),
       ISBN = require('isbn').ISBN;
@@ -184,7 +184,17 @@ async function fetch_wanted_books() {
         if (!res.ok) {
             throw new Error(`Failed to fetch booklog page ${page}: ${res.status} ${res.statusText}`);
         }
-        const data = await res.json();
+        const text = await res.text();
+        if (!text.trim()) {
+            throw new Error(`Empty response from ${url} (status: ${res.status})`);
+        }
+        let data;
+        try {
+            data = JSON.parse(text);
+        } catch (err) {
+            console.error(`Invalid JSON from ${url} (status ${res.status}):`, text.slice(0, 500));
+            throw err;
+        }
         if (!data.books || data.books.length === 0) {
             break;
         }

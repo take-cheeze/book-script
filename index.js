@@ -52,7 +52,10 @@ function output_book_list() {
     config.libraries.forEach((library) => {
         const res = [csv_header];
         books.forEach((book) => {
-            const cache = search_cache[book.id][library];
+            const bookCache = search_cache[book.id];
+            if (!bookCache) return; // not yet searched, skip
+            const cache = bookCache[library];
+            if (!cache) return; // library not in cache for this book
             if (!already_found[book.id] && cache.status !== 'Error' && owned_in_library(cache)) {
                 res.push([book.id, book.title, book.item.author, book.item.publisher,
                           book.item.release_date, book.item.pages, book.item.price || book.item.savedPrice,
@@ -242,7 +245,27 @@ async function fetch_wanted_books() {
         if (!altData.books || !Array.isArray(altData.books)) {
             throw new Error('Alternative API returned unexpected data');
         }
-        books = altData.books;
+        // Normalize sparse alternative-API books into the shape expected by downstream code.
+        // Primary API shape: { id (ISBN), title, image, image_2x, item: { author, publisher, ... } }
+        // Alternative API shape: { url, title, image, catalog }
+        // The ISBN is the last path segment of the URL: .../archives/1/<ISBN>
+        books = altData.books.map((b) => {
+            const id = b.url ? b.url.split('/').pop() : '';
+            return {
+                id,
+                title: b.title || '',
+                image: b.image || '',
+                image_2x: b.image || '',
+                item: {
+                    author: '',
+                    publisher: '',
+                    release_date: null,
+                    pages: null,
+                    price: null,
+                    savedPrice: null,
+                },
+            };
+        }).filter(b => b.id); // discard any entries where we couldn't extract an ISBN
     }
 
     return books;

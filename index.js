@@ -2,7 +2,7 @@
 
 const fetch = globalThis.fetch || require('node-fetch'),
       fs = require('fs'),
-      stringify = require('csv-stringify/lib/sync'),
+      { stringify } = require('csv/sync'),
       ISBN = require('isbn').ISBN;
 
 const config = JSON.parse(fs.readFileSync(`${__dirname}/config.json`));

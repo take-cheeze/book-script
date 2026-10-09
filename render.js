@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs'),
-      csv_parse = require('csv-parse/lib/sync'),
+      { parse: csv_parse } = require('csv/sync'),
       _ = require('underscore');
 
 const config = JSON.parse(fs.readFileSync(`${__dirname}/config.json`));
